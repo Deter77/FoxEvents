@@ -1,0 +1,338 @@
+# Strefa czasowa używana do planowania eventów (czas polski: Europe/Warsaw)
+timezone: "Europe/Warsaw"
+
+schedule:
+  monday:
+    active: true
+    from: "18:00"
+    to: "23:00"
+    min-time-between-events: 90
+    amount-of-events: 2
+  tuesday:
+    active: true
+    from: "18:00"
+    to: "23:00"
+    min-time-between-events: 90
+    amount-of-events: 2
+  wednesday:
+    active: true
+    from: "18:00"
+    to: "23:00"
+    min-time-between-events: 90
+    amount-of-events: 2
+  thursday:
+    active: true
+    from: "18:00"
+    to: "23:00"
+    min-time-between-events: 90
+    amount-of-events: 2
+  friday:
+    active: true
+    from: "16:00"
+    to: "23:30"
+    min-time-between-events: 90
+    amount-of-events: 3
+  saturday:
+    active: true
+    from: "14:00"
+    to: "23:30"
+    min-time-between-events: 90
+    amount-of-events: 3
+  sunday:
+    active: true
+    from: "14:00"
+    to: "22:00"
+    min-time-between-events: 90
+    amount-of-events: 2
+
+event-types:
+  arena_pvp:
+    chance: 50
+  parkour:
+    chance: 25
+  core_overheat:
+    chance: 25
+  castle_domination:
+    chance: 25
+
+# DEFINICJA PUL NAGRÓD
+reward-pools:
+  legendary_pool:
+    items:
+      - command: "money give %player% 5000"
+        weight: 50
+      - command: "sigil give %player% fragment_op 1"
+        weight: 5
+      - command: "relikt give %player% czesc_zbroi_fox 1"
+        weight: 15
+      - command: "crate give %player% premium_key 1"
+        weight: 30
+
+  standard_pool:
+    items:
+      - command: "money give %player% 1000"
+        weight: 70
+      - command: "crate give %player% normal_key 1"
+        weight: 30
+
+events:
+  arena_pvp:
+    world: "world"
+    duration-minutes: 15
+    announcement-minutes: 15
+    prepaste-minutes-before-start: 10
+
+    # Szablon komendy FAWE; dostępne placeholdery: %schematic%, %x%, %y%, %z%
+    fawe-paste-command: "fawe paste %schematic% %x% %y% %z%"
+
+    schematics:
+      start: "arena_centrum.schem"
+      end: "arena_centrum_clear.schem"
+
+    schematic-paste:
+      x: 1
+      y: 79
+      z: -128
+
+    gem-spawn:
+      x: 1
+      y: 74
+      z: -128
+
+    push-center:
+      x: 1
+      y: 71
+      z: -128
+
+    push-radius: 7.0
+    push-target-distance: 11.0
+
+    region:
+      pos1:
+        x: -31
+        y: 65
+        z: -103
+      pos2:
+        x: 34
+        y: 100
+        z: -151
+
+    # KONFIGURACJA NAGRÓD DLA KONKRETNEGO EVENTU
+    rewards:
+      1:
+        rolls: 3
+        pool: "legendary_pool"
+      2:
+        rolls: 2
+        pool: "legendary_pool"
+      3:
+        rolls: 2
+        pool: "standard_pool"
+      4:
+        rolls: 1
+        pool: "standard_pool"
+      5:
+        rolls: 1
+        pool: "standard_pool"
+
+  parkour:
+    world: "world"
+    duration-minutes: 15
+    announcement-minutes: 15
+    schematics:
+      start: "parkour.schem"
+      end: "parkour_clear.schem"
+    schematic-paste:
+      x: -34
+      y: 131
+      z: 116
+    region:
+      pos1:
+        x: -31
+        y: 110
+        z: 126
+      pos2:
+        x: -58
+        y: 200
+        z: 106
+    finish:
+      x: -40
+      y: 161
+      z: 111
+    teleport-after-finish:
+      x: 0
+      y: 70
+      z: 0
+
+    # KONFIGURACJA NAGRÓD DLA KONKRETNEGO EVENTU
+    rewards:
+      1:
+        rolls: 3
+        pool: "legendary_pool"
+      2:
+        rolls: 2
+        pool: "legendary_pool"
+      3:
+        rolls: 2
+        pool: "standard_pool"
+      4:
+        rolls: 1
+        pool: "standard_pool"
+      5:
+        rolls: 1
+        pool: "standard_pool"
+
+  core_overheat:
+    world: "world"
+    duration-minutes: 30
+    announcement-minutes: 15
+    schematics:
+      start: "caves.schem"
+      end: "caves_clear.schem"
+    schematic-paste:
+      x: -32
+      y: 131
+      z: 116
+    region:
+      pos1:
+        x: 12
+        y: 58
+        z: 156
+      pos2:
+        x: -50
+        y: 110
+        z: 102
+
+    # KONFIGURACJA NAGRÓD DLA KONKRETNEGO EVENTU
+    rewards:
+      1:
+        rolls: 3
+        pool: "legendary_pool"
+      2:
+        rolls: 2
+        pool: "legendary_pool"
+      3:
+        rolls: 2
+        pool: "standard_pool"
+      4:
+        rolls: 1
+        pool: "standard_pool"
+      5:
+        rolls: 1
+        pool: "standard_pool"
+
+  castle_domination:
+    world: "world"
+    duration-minutes: 15
+    announcement-minutes: 15
+    region:
+      pos1:
+        x: -107
+        y: 82
+        z: 68
+      pos2:
+        x: -144
+        y: 150
+        z: 123
+    schematics:
+      start:
+        zone1:
+          file: "castle_zone1.schem"
+          x: -127
+          y: 96
+          z: 76
+        zone2:
+          file: "castle_zone2.schem"
+          x: -140
+          y: 93
+          z: 98
+        zone3:
+          file: "castle_zone3.schem"
+          x: -114
+          y: 93
+          z: 105
+        zone4:
+          file: "castle_zone4.schem"
+          x: -128
+          y: 88
+          z: 106
+      end:
+        zone1:
+          file: "castle_zone1_clear.schem"
+          x: -127
+          y: 96
+          z: 76
+        zone2:
+          file: "castle_zone2_clear.schem"
+          x: -140
+          y: 93
+          z: 98
+        zone3:
+          file: "castle_zone3_clear.schem"
+          x: -114
+          y: 93
+          z: 105
+        zone4:
+          file: "castle_zone4_clear.schem"
+          x: -128
+          y: 88
+          z: 106
+    zones:
+      triple:
+        multiplier: 3
+        pos1:
+          x: -125
+          y: 96
+          z: 78
+        pos2:
+          x: -129
+          y: 100
+          z: 74
+      double1:
+        multiplier: 2
+        pos1:
+          x: -141
+          y: 93
+          z: 95
+        pos2:
+          x: -139
+          y: 97
+          z: 101
+      double2:
+        multiplier: 2
+        pos1:
+          x: -116
+          y: 93
+          z: 103
+        pos2:
+          x: -112
+          y: 97
+          z: 107
+      single:
+        multiplier: 1
+        pos1:
+          x: -132
+          y: 86
+          z: 102
+        pos2:
+          x: -124
+          y: 91
+          z: 110
+
+    # KONFIGURACJA NAGRÓD DLA KONKRETNEGO EVENTU
+    rewards:
+      1:
+        rolls: 3
+        pool: "legendary_pool"
+      2:
+        rolls: 2
+        pool: "legendary_pool"
+      3:
+        rolls: 2
+        pool: "standard_pool"
+      4:
+        rolls: 1
+        pool: "standard_pool"
+      5:
+        rolls: 1
+        pool: "standard_pool"

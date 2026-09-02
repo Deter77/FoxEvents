@@ -1,0 +1,15 @@
+name: FoxEvents
+version: '1.0.0'
+main: pl.foxevents.FoxEventsPlugin
+api-version: '1.21'
+authors: [DeXter]
+description: Automatyczne eventy na serwerze.
+commands:
+  eventstart:
+    description: Ręcznie uruchamia event (losowo lub wskazany).
+    usage: /eventstart <random|event>
+    permission: foxevents.admin
+permissions:
+  foxevents.admin:
+    description: Dostęp do komendy /eventstart
+    default: op
